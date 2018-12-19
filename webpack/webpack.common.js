@@ -33,18 +33,9 @@ module.exports = {
         include: /node_modules/,
         type: 'javascript/auto'
       },
-      {
-        test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[path][name].[ext]'
-          }
-        }
-      },
 			{
-				// Load all images as base64 encoding if they are smaller than 8192 bytes
-				test: /\.(png|jpg|gif)$/,
+				// Load all files as base64 encoding if they are smaller than 8192 bytes
+				test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
 				use: [
 					{
 						loader: 'url-loader',
@@ -52,7 +43,6 @@ module.exports = {
 							// On development we want to see where the file is coming from, hence we preserve the [path]
 							name: '[path][name].[ext]?hash=[hash:20]',
 							limit: 8192
-
 						}
 					}
 				]
